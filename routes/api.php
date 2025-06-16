@@ -18,4 +18,13 @@ use App\Http\Controllers\Api\TaskController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
 Route::apiResource('tasks', TaskController::class);
+
+Route::get('/dashboard-stats', function () {
+    return response()->json([
+        'todayTasks' => 7,
+        'completedTasks' => 25,
+        'activeProjects' => 4
+    ]);
+});
